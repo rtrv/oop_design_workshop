@@ -1,5 +1,5 @@
-class Container
-  attr_reader :limit, :package_class
+class InfinitContainer < Container
+  attr_reader :package_class
 
   # def reset_limit
   #   @limit
@@ -7,15 +7,13 @@ class Container
 
   def initialize(package_class:, limit:)
     @package_class = package_class
-    @limit = limit
+    # @limit = limit
   end
 
   def call
-    raise "I'm empty" if @limit.zero?
+    # raise "I'm empty" if @limit.zero?
 
     @package_class.new
-
-    @limit -= 1
   end
 
   private

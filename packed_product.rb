@@ -1,8 +1,10 @@
 # Abstract
 class PackedProduct
-  attr_reader :cost, :package, :empty
+  attr_reader :cost, :package, :empty, :tax_category
 
-  def initialize; end
+  def initialize(package:)
+    @package = package
+  end
 
   def open
     raise NotImplemented

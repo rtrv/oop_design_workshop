@@ -2,17 +2,15 @@ require './package.rb'
 require './bottlecap.rb'
 
 class Bottle < Package
-
-  def initialize
-    @cap = Bottlecap.new
-  end
-
   def open!
-    # raise 'Not openable'
     @cap = nil
+
+    super
   end
 
-  def open?
-    @cap.nil?
+  def close!
+    @cap = Bottlecap.new
+
+    super
   end
 end

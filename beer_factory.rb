@@ -13,16 +13,17 @@ class BeerFactory < Factory
   #   super(**args)
   # end
 
-  def place_order(quantity:, product_class:)
+  # def place_order(quantity:, product_class:)
     
-  end
+  # end
 
-  private
+  # private
 
-  def produce!(quantity:, container: Container, conveyor: Conveyor)
-    package_source = container.new(package_class: Bottle, limit: 1000)
+  def produce!(quantity:, container: Container, conveyor_class: Conveyor)
+    package_source = container.new(package_class: Bottle, limit: 1000, cost: 13)
+    conveyor = conveyor_class.new(product_class: Beer, package_source: package_source)
 
-    batch = conveyor.new.produce(product_class: Beer, quantity: quantity, package_source: package_source)
+    batch = conveyor.produce(quantity: quantity)
 
     @produced_goods += batch
     batch

@@ -1,11 +1,24 @@
 class Package
   attr_reader :cost, :open
 
+  def initialize(cost:)
+    @open = true
+    @cost = cost
+  end
+
   def open!
-    raise NotImplemented
+    raise if @open
+
+    @open = true
   end
 
   def open?
-    raise NotImplemented
+    @open
+  end
+
+  def close!
+    raise unless @open
+
+    @open = false
   end
 end

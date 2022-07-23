@@ -5,17 +5,18 @@ class Container
   #   @limit
   # end
 
-  def initialize(package_class:, limit:)
+  def initialize(package_class:, limit:, cost:)
     @package_class = package_class
     @limit = limit
+    @cost = cost
   end
 
   def call
     raise "I'm empty" if @limit.zero?
 
-    @package_class.new
-
     @limit -= 1
+
+    @package_class.new(cost: @cost)
   end
 
   private

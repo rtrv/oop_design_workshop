@@ -6,7 +6,7 @@ class PackedProduct
     @package = package
   end
 
-  def open
+  def open!
     raise NotImplemented
   end
 
